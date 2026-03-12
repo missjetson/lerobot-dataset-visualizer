@@ -30,6 +30,8 @@ const EXAMPLE_DATASETS = [
   "lerobot/aloha_static_cups_open",
 ];
 
+const HAS_MARSO_PREVIEWS = process.env.MARSO_DATASET_ROOT !== undefined;
+
 function HomeInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -375,6 +377,15 @@ function HomeInner() {
             />
           </svg>
         </Link>
+
+        {HAS_MARSO_PREVIEWS ? (
+          <Link
+            href="/marso"
+            className="inline-flex items-center gap-2 px-6 py-3 mt-4 rounded-md border border-orange-400/40 bg-orange-500/10 backdrop-blur-sm text-orange-100 font-semibold text-lg shadow-lg hover:bg-orange-500/20 active:scale-95 transition-all"
+          >
+            Open Marso Preview Datasets
+          </Link>
+        ) : null}
       </div>
     </div>
   );
